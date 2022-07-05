@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+//import "common/common.proto"; //GELO not used
+
+option java_multiple_files = true;
+option java_package = "com.kierangelo.grpccart.cart"; //GELO grpccart or grpc-cart
+
+message CartSearchRequest{
+  int32 id = 1;
+}
+
+message CartResponse {
+  int32 id = 1;
+  int32 productId = 2;
+  int32 quantity = 3;
+}
+
+message CartUpdateRequest{
+  int32 id = 1;
+  int32 productId = 2;
+  int32 quantity = 3;
+}
+
+service CartService {
+  rpc getCartById(CartSearchRequest) returns (CartResponse);
+  rpc updateCartById(CartUpdateRequest) returns (CartResponse);
+}
